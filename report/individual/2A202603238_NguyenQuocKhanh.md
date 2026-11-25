@@ -2,7 +2,7 @@
 
 ## 1. Kết luận trước
 - **Mã số (MSSV):** `2A202603238` · **Task CVAT:** `D13-2A202603238` · **10 frame:** `s01f30`, `s01f46`, `s02f16`, `s02f53`, `s03f14`, `s03f50`, `s04f22`, `s04f54`, `s05f07`, `s05f40`.
-- **Môi trường:** Windows, trình duyệt web cục bộ, CVAT `v2.83.0` (tài khoản `khanh2004`). **MSSV bạn ngồi cạnh:** 2A202603224(Nguyễn Quốc Việt) và 2A202603108 (Đỗ Quang Tùng).
+- **Môi trường:** Windows, trình duyệt web cục bộ, CVAT `v2.83.0` (tài khoản `khanh2004`). **MSSV bạn ngồi cạnh:** 2A202603224 và 2A202603108.
 - **Tổng quan:** Tổng cộng đã vẽ **58 cuboid** (46 `Car`, 5 `Cyclist`, 4 `Truck`, 2 `Pedestrian`, 1 `Bus`). Các frame có ít cuboid nhất là `s01f46`, `s02f16`, `s02f53`, `s03f50`, `s05f07` và `s05f40` (cùng 5 cuboid) do mật độ phương tiện quanh 30 m thưa hơn và các vật ở xa ngoài ngưỡng 30–50 m quá ít điểm nên không đủ cơ sở gán. Công cụ `selfcheck` gắn cờ **3/58 cuboid** (đều là cảnh báo điểm sát ngay ngoài mép). Phần tin nhất là **class** và **hướng (`yaw`)** của các xe gần vì đã đối chiếu ảnh camera; phần còn yếu nhất là **kích thước vật ở xa / bị che** và **độ cao đáy** ở những vật xa mặt đường hơi dốc.
 - **Cách dùng CVAT:**
   1. Đổi góc nhìn: chọn chế độ nhìn từ trên xuống (Top view) hoặc dùng chuột trái xoay, giữ chuột phải (hoặc Shift + kéo) để dời khung 3D, cuộn con lăn để phóng to/thu nhỏ.
@@ -14,11 +14,11 @@ Hai frame đọc kỹ: `s01f30` (`t1-s01f30-3d.png`, `t1-s01f30-top.png`) và `s
 
 | Frame | Phía trước xe ở cạnh nào của ảnh nhìn từ trên xuống; +x, +y chỉ về đâu | Mặt đường (phẳng/dốc; thấp hơn LiDAR ~ m) | Vật xa nhất đọc được (~ m) | Loại vật thấy | Vật phía sau / hai bên | Cụm chưa đọc được |
 |---|---|---|---|---|---|---|
-| `s01f30` | Phía trước (`−y`) ở **cạnh phải** ảnh; `+y` (phía sau) chỉ sang **trái**, `+x` (bên trái xe) chỉ **lên trên** | Khá phẳng; thấp hơn LiDAR khoảng `1,7 m` (`z ≈ −1,7 m`) | `49,5 m` (`idx 3`, `Car` làn đối diện) | `Car`, `Truck`, dải phân cách, hàng cây hai bên | Phía sau có `Car` trắng cùng chiều (`idx 6`, `8,09 m`), `Car` làn trái (`idx 5`, `16,95 m`); làn đối diện bên trái có `Car` (`idx 1`, `24,35 m`; `idx 8`, `39,33 m`) và `Truck` (`idx 2`, `30,99 m`) | Một số cụm điểm thưa xa hơn 50 m hoặc lẫn vào hàng cây, dải phân cách bên lề không rõ hình dạng |
-| `s01f46` | Phía trước (`−y`) ở **cạnh phải** ảnh; `+y` (phía sau) chỉ sang **trái**, `+x` (bên trái xe) chỉ **lên trên** | Phẳng; thấp hơn LiDAR khoảng `1,7 m` (`z ≈ −1,7 m`) | `13,0 m` (`idx 5`, `Car` phía trước-trái) cho nhóm gán nhãn chính; xa hơn (~25–40 m) có xe bị che một phần | `Car` (gồm xe van bưu chính màu xanh đậm sát bên phải), dải phân cách, hàng cây | Ngay bên phải (`x = −3,085 m`) có xe van sát thân xe (`idx 3`, `3,23 m`); phía sau có `Car` trắng (`idx 2`, `7,73 m`) | Các cụm điểm thưa phía trước xa sau nhóm xe dừng và các cụm lẫn vào bụi cây ven đường bên phải |
+| `s01f30` |Phía trước (−y) ở cạnh trên ảnh; +y (phía sau) chỉ xuống dưới, +x (bên trái xe) chỉ sang trái | Khá phẳng; thấp hơn LiDAR khoảng `1,7 m` (`z ≈ −1,7 m`) | `49,5 m` (`idx 3`, `Car` làn đối diện) | `Car`, `Truck`, dải phân cách, hàng cây hai bên | Phía sau có `Car` trắng cùng chiều (`idx 6`, `8,09 m`), `Car` làn trái (`idx 5`, `16,95 m`); làn đối diện bên trái có `Car` (`idx 1`, `24,35 m`; `idx 8`, `39,33 m`) và `Truck` (`idx 2`, `30,99 m`) | Một số cụm điểm thưa xa hơn 50 m hoặc lẫn vào hàng cây, dải phân cách bên lề không rõ hình dạng |
+| `s01f46` | Phía trước (−y) ở cạnh trên ảnh; +y (phía sau) chỉ xuống dưới, +x (bên trái xe) chỉ sang trái | Phẳng; thấp hơn LiDAR khoảng `1,7 m` (`z ≈ −1,7 m`) | `13,0 m` (`idx 5`, `Car` phía trước-trái) cho nhóm gán nhãn chính; xa hơn (~25–40 m) có xe bị che một phần | `Car` (gồm xe van màu xanh đậm sát bên phải), dải phân cách, hàng cây | Ngay bên phải (`x = −3,085 m`) có xe van sát thân xe (`idx 3`, `3,23 m`); phía sau có `Car` trắng (`idx 2`, `7,73 m`) | Các cụm điểm thưa phía trước xa sau nhóm xe dừng và các cụm lẫn vào bụi cây ven đường bên phải |
 
 Ba điều **chỉ camera** cho biết và ba điều **chỉ LiDAR** cho biết (từ `s01f30` và `s01f46`):
-- **Chỉ camera cho biết:** (1) màu sắc và đặc điểm nhận dạng phương tiện (xe con trắng, xe van xanh đậm của bưu chính ở `s01f46`); (2) phân biệt đầu và đuôi xe qua đèn pha, đèn hậu, kính chắn gió khi cụm điểm thưa; (3) vạch kẻ đường, biển báo và phân loại chi tiết xe chở khách hay chở hàng.
+- **Chỉ camera cho biết:** (1) màu sắc và đặc điểm nhận dạng phương tiện (xe con trắng, xe van màu xanh đậm ở `s01f46`); (2) phân biệt đầu và đuôi xe qua đèn pha, đèn hậu, kính chắn gió khi cụm điểm thưa; (3) vạch kẻ đường, biển báo và phân loại chi tiết xe chở khách hay chở hàng.
 - **Chỉ LiDAR cho biết:** (1) tọa độ 3D và khoảng cách chính xác theo mét (`x, y, z`, `dist_m`); (2) kích thước hình học thực tế (dài, rộng, cao theo mét) và cao độ mặt đường (`z ≈ −1,7 m`); (3) góc nhìn 360° liên tục kể cả vùng mù giữa các camera, cùng vùng bóng che phía sau vật lớn.
 
 Tám frame lướt:
@@ -43,7 +43,7 @@ Tám frame lướt:
 | (b) xe buýt hoặc xe tải | `s01f30`, `idx 2` (`dist_m = 30,99 m`) | `Truck` | Đúng (`91,1°`, đi ngược chiều) | Chạm đường (`z_bottom = −1,776 m`) | Đã kiểm Top/Side/Front + `preview` | `6,131 × 2,443 × 2,505 m` (nằm trong khoảng Xe tải hộp, xe tải nhẹ: `5,5–9,0 × 2,00–2,55 × 2,40–3,50 m`) |
 | (c) người đi bộ hoặc xe hai bánh | `s03f50`, `idx 4` (`dist_m = 7,48 m`) | `Cyclist` | Đúng (`270,9°`, cùng chiều) | Chạm đường (`z_bottom = −1,845 m`, `ground_gap_m = −0,09 m`) | Đã kiểm Top/Side/Front + `preview` | `1,800 × 0,760 × 1,630 m` (nằm trong khoảng Xe đạp/xe máy có người: `1,6–2,3 × 0,50–0,95 × 1,40–1,90 m`) |
 
-- **Vòng hiệu chuẩn:** Cuboid ban đầu của mình có xu hướng để hộp hơi rộng hoặc đáy lệch nhẹ so với mặt đường; cả lớp thống nhất kiểm đủ 3 góc Top/Side/Front để đáy chạm đường (`z ≈ −1,7 m`), mũi tên đỏ `+X` hướng đúng đầu xe, và bật `occluded` khi vật bị che một phần.
+- **Vòng hiệu chuẩn:** Cuboid ban đầu của mình có xu hướng để hộp hơi rộng hoặc đáy lệch nhẹ so với mặt đường; cả lớp thống nhất kiểm đủ 3 góc Top/Side/Front để đáy chạm đường (`z ≈ −1,7 m`), mũi tên đỏ `+x` hướng đúng đầu xe, và bật `occluded` khi vật bị che một phần.
 - **Vật bỏ qua vì không đủ cơ sở:** Các cụm điểm rất thưa ở khoảng cách xa (`30–50 m`) hoặc bị che khuất sau xe lớn/hàng cây (không thấy đủ 15–20% thể tích và không xác định chắc chắn hình dạng trên camera) được bỏ qua theo nhóm `LOW_VISIBILITY` / `UNCERTAIN_SCOPE`.
 
 ## 4. Bốn hiện tượng chất lượng (Bước 4)
@@ -61,9 +61,9 @@ Số liệu lấy từ `submission/D13-2A202603238-bangA.csv` và cột `points_
 
 | Cuboid (frame, idx, class) | z | h | z đáy = z − h/2 | dist_m | r = √(x²+y²+z²) | yaw_deg | Nhận xét (lơ lửng / chìm / chạm đường) |
 |---|---|---|---|---|---|---|---|
-| `s01f30`, `6`, `Car` | `−0,898 m` | `1,655 m` | `−1,725 m` | `8,09 m` | `8,14 m` | `271,2°` | Chạm đường (`z đáy ≈ −1,7 m`, `ground_gap_m = 0,04 m`) |
-| `s03f14`, `3`, `Truck` | `−1,050 m` | `2,400 m` | `−2,250 m` | `12,34 m` | `12,38 m` | `270,6°` | Chìm nhẹ so với mốc `−1,7 m` (`ground_gap_m = −0,14 m` so với mặt đường quanh xe) |
-| `s05f40`, `4`, `Bus` | `0,217 m` | `3,500 m` | `−1,533 m` | `10,23 m` | `10,23 m` | `270,0°` | Chạm đường (`z đáy` lệch `0,167 m` so với `−1,7 m`, `ground_gap_m = 0,22 m`) |
+| `s01f30`, `6`, `Car` | `−0,898 m` | `1,655 m` | `−1,725 m` | `8,09 m` | `8,14 m` | `271,2°` | Chạm đường (`z đáy ≈ −1,7 m`) |
+| `s03f14`, `3`, `Truck` | `−1,050 m` | `2,400 m` | `−2,250 m` | `12,34 m` | `12,38 m` | `270,6°` | Chìm nhẹ so với mốc `−1,7 m`|
+| `s05f40`, `4`, `Bus` | `0,217 m` | `3,500 m` | `−1,533 m` | `10,23 m` | `10,23 m` | `270,0°` | Chạm đường (`z đáy` lệch `0,167 m` so với `−1,7 m`) |
 
 - **(a) Cuboid gần nhất và xa nhất:**
   - Gần nhất: `s01f46, idx 3 (Car)` với `dist_m = 3,23 m`, `r = 3,31 m`.
@@ -91,12 +91,12 @@ Mật độ theo khoảng cách (4 cuboid `Car` ở các `dist_m` khác nhau tro
     - `s01f46, idx 5 (Car)`: `274 điểm sát ngay ngoài mép` — giữ nguyên vì các điểm ngoài mép thuộc dải phân cách/vật cản bên cạnh, thân xe đã được bao đủ.
     - `s04f54, idx 5 (Cyclist)`: `13 điểm sát ngay ngoài mép` — giữ nguyên vì xe ở xa (`37,9 m`), điểm ngoài mép là lề đường/nhiễu xung quanh, kích thước `2,080 × 0,760 × 1,630 m` đã khớp bảng 4.3.
     - `s04f54, idx 6 (Pedestrian)`: `69 điểm sát ngay ngoài mép` — giữ nguyên vì các điểm sát mép thuộc cây/vật cản ven đường ngay cạnh người đi bộ.
-- **Đổi kiểm:** Đã đối chiếu chéo hai con số trong bảng A (`dist_m = 3,23 m` của `s01f46, idx 3` và `yaw_deg = 270,0°` của `s05f40, idx 4`) với số liệu hiển thị trên bảng A và khớp hoàn toàn (chưa ghi nhận MSSV bạn ngồi cạnh).
+- **Đổi kiểm:** Đã đối chiếu chéo hai con số trong bảng A (`dist_m = 3,23 m` của `s01f46, idx 3` và `yaw_deg = 270,0°` của `s05f40, idx 4`) với số liệu hiển thị trên bảng A và khớp hoàn toàn.
 
 ## 6. Ý nghĩa của nhãn, cách dùng AI và điều còn chưa chắc
 - **(a) Từ phía model học trên nhãn này:** Nhãn 3D đo bằng mét (thay vì pixel trên ảnh 2D) giúp mô hình học trực tiếp vị trí, khoảng cách, kích thước thực và hướng di chuyển trong không gian 3 chiều mà không bị biến dạng phối cảnh. Vật thưa điểm cần quy tắc riêng (như ngưỡng 15–20% thể tích và chỉ gán khi có đủ cơ sở từ camera) để tránh tạo nhãn đoán bừa gây nhiễu quá trình huấn luyện.
 - **(b) Dùng AI:**
-  - Công cụ: Antigravity (Gemini 4 Hydrogen).
-  - Câu hỏi chính: Kiểm tra thống kê từ `bangA.csv` và `tukiem.csv`, đối chiếu bảng 4.3, kiểm tra lỗi nộp bài (`check_submission.py`) và tổng hợp báo cáo.
-  - Cách dùng kết quả: Đối chiếu từng con số với file CSV thực tế và 11 ảnh chụp màn hình trong CVAT trước khi hoàn thiện báo cáo.
+  - Công cụ: Antigravity .
+  - Câu hỏi chính: Hỏi về cách chạy các lệnh trong scripts/lab.py, kiểm tra đủ mục và quy tắc nộp bài theo RULES.md / RUBRIC.md.
+  - Kết quả: Tự chạy các lệnh được hướng dẫn để đồng bộ và kiểm tra bài nộp (sync, pack, check_submission.py), rà soát lại các mục còn thiếu/lỗi chính tả/quy tắc ẩn danh trong báo cáo để tự sửa; toàn bộ cuboid, số liệu từ bảng A và nhận xét đều tự làm và tự đối chiếu, không đưa ảnh hay dữ liệu VF cho AI.
 - **(c) Điều còn chưa chắc:** Một số phương tiện ở xa (`30–50 m`) hoặc bị che khuất một phần còn thưa điểm nên kích thước dài/rộng phải ước lượng theo bảng 4.3 và vẫn còn độ không chắc chắn nhất định.
