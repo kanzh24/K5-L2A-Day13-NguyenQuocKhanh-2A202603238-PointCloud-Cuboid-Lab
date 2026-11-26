@@ -62,7 +62,7 @@ Số liệu lấy từ `submission/D13-2A202603238-bangA.csv` và cột `points_
 | Cuboid (frame, idx, class) | z | h | z đáy = z − h/2 | dist_m | r = √(x²+y²+z²) | yaw_deg | Nhận xét (lơ lửng / chìm / chạm đường) |
 |---|---|---|---|---|---|---|---|
 | `s01f30`, `6`, `Car` | `−0,898 m` | `1,655 m` | `−1,725 m` | `8,09 m` | `8,14 m` | `271,2°` | Chạm đường (`z đáy ≈ −1,7 m`) |
-| `s03f14`, `3`, `Truck` | `−1,050 m` | `2,400 m` | `−2,250 m` | `12,34 m` | `12,38 m` | `270,6°` | Chìm nhẹ so với mốc `−1,7 m`|
+| `s03f14`, `3`, `Truck` | `−0,884 m` | `2,234 m` | `−2,002 m` | `12,34 m` | `12,37 m` | `270,6°` | Chạm đường (`z đáy` thấp hơn mốc `−1,7 m` khoảng `0,30 m` do mặt đường dốc, nhưng `ground_gap_m = +0,11 m` theo `tukiem.csv`, không chìm) |
 | `s05f40`, `4`, `Bus` | `0,217 m` | `3,500 m` | `−1,533 m` | `10,23 m` | `10,23 m` | `270,0°` | Chạm đường (`z đáy` lệch `0,167 m` so với `−1,7 m`) |
 
 - **(a) Cuboid gần nhất và xa nhất:**
